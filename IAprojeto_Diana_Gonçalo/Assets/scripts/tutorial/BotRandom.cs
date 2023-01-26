@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BotRandom : MonoBehaviour
 {
@@ -72,51 +73,72 @@ public class BotRandom : MonoBehaviour
     //variáveis das cartas do inimigo
 
     //carta tsunami têm ID = 7;
+    public GameObject carta7;
     public TMP_Text VidaTexto7;
     private float vida7;
     private float defesa7;
+    public TMP_Text DefesaTexto7;
     private float ataque7;
+    public TMP_Text AtaqueTexto7;
     private int cooldown7;
 
 
     //carta terramoto têm ID = 8;
+    public GameObject carta8;
     public TMP_Text VidaTexto8;
     private float vida8;
     private float defesa8;
+    public TMP_Text DefesaTexto8;
     private float ataque8;
+    public TMP_Text AtaqueTexto8;
     private int cooldown8;
 
 
     //carta fogo têm ID = 9;
+    public GameObject carta9;
     public TMP_Text VidaTexto9;
     private float vida9;
     private float defesa9;
+    public TMP_Text DefesaTexto9;
     private float ataque9;
+    public TMP_Text AtaqueTexto9;
     private int cooldown9;
 
 
     //carta trovoadas têm ID = 10;
+    public GameObject carta10;
     public TMP_Text VidaTexto10;
     private float vida10;
     private float defesa10;
+    public TMP_Text DefesaTexto10;
     private float ataque10;
+    public TMP_Text AtaqueTexto10;
     private int cooldown10;
 
 
     //carta tornado têm ID = 11;
+    public GameObject carta11;
     public TMP_Text VidaTexto11;
     private float vida11;
     private float defesa11;
+    public TMP_Text DefesaTexto11;
     private float ataque11;
+    public TMP_Text AtaqueTexto11;
     private int cooldown11;
 
 
     //carta volcão têm ID = 12;
+    public GameObject carta12;
     public TMP_Text VidaTexto12;
     private float vida12;
     private float defesa12;
+    public TMP_Text DefesaTexto12;
     private float ataque12;
+    public TMP_Text AtaqueTexto12;
     private int cooldown12;
+
+
+    private int cartas;
 
 
     //<--------------------------------------------------------------------------->
@@ -126,6 +148,9 @@ public class BotRandom : MonoBehaviour
 
     private void Start()
     {
+        cartas = 6;
+
+
         //carta tsunami do player com ID = 1;
         vida1 = 28;
         defesa1 = 14;
@@ -211,38 +236,141 @@ public class BotRandom : MonoBehaviour
     //Se o player escolher usar a sua carta do tsunami a função é ativada
     public void PlayerTsunamiUse()
     {
-        UseTsunami.SetActive(true);
+        if (cooldown1 <= 0)
+        {
+            UseTsunami.SetActive(true);
+        }
+        else
+        {
+
+        }
     }
 
     //Se o player escolher usar a sua carta do terramoto a função é ativada
     public void PlayerTerramotoUse()
     {
-        UseTerramoto.SetActive(true);
+        if (cooldown2 <= 0)
+        {
+            UseTerramoto.SetActive(true);
+        }
+        else
+        {
+
+        }
     }
 
     //Se o player escolher usar a sua carta do fogo a função é ativada
     public void PlayerFogoUse()
     {
-        UseFogo.SetActive(true);
+        if (cooldown3 <= 0)
+        {
+            UseFogo.SetActive(true);
+        }
+        else
+        {
+
+        }
     }
 
     //Se o player escolher usar a sua carta do trevoadas a função é ativada
     public void PlayerTrevoadasUse()
     {
-        UseTrevoada.SetActive(true);
+        if (cooldown4 <= 0)
+        {
+            UseTrevoada.SetActive(true);
+        }
+        else
+        {
+
+        }
     }
 
     //Se o player escolher usar a sua carta do tornado a função é ativada
     public void PlayerTornadoUse()
     {
-        UseTornado.SetActive(true);
+        if (cooldown5 <= 0)
+        {
+            UseTornado.SetActive(true);
+        }
+        else
+        {
+
+        }
     }
 
     //Se o player escolher usar a sua carta do volcão a função é ativada
     public void PlayerVolcaoUse()
     {
-        UseVolcao.SetActive(true);
+        if (cooldown6 <= 0)
+        {
+            UseVolcao.SetActive(true);
+        }
+        else
+        {
+
+        }
     }
+
+    //<-------------------------------REDUCE COOLDOWN-------------------------------------------->
+
+    //ao clicar no use vão ser ativadas 2 funções, uma para atacar e outra para reduzir o cooldown das próprias cartas
+
+    //a lógica nestas funções será: se o cooldown tiver acima de 0 então reduzir 1, caso contrário o cooldown continua igual a 0
+
+    public void CooldownTsunami()
+    {
+        cooldown2 -= 1;
+        cooldown3 -= 1;
+        cooldown4 -= 1;
+        cooldown5 -= 1;
+        cooldown6 -= 1;
+    }
+
+    public void CooldownTerramoto()
+    {
+        cooldown1 -= 1;
+        cooldown3 -= 1;
+        cooldown4 -= 1;
+        cooldown5 -= 1;
+        cooldown6 -= 1;
+    }
+
+    public void CooldownFogo()
+    {
+        cooldown1 -= 1;
+        cooldown2 -= 1;
+        cooldown4 -= 1;
+        cooldown5 -= 1;
+        cooldown6 -= 1;
+    }
+
+    public void CooldownTrevoada()
+    {
+        cooldown1 -= 1;
+        cooldown2 -= 1;
+        cooldown3 -= 1;
+        cooldown5 -= 1;
+        cooldown6 -= 1;
+    }
+
+    public void CooldownTornado()
+    {
+        cooldown1 -= 1;
+        cooldown2 -= 1;
+        cooldown3 -= 1;
+        cooldown4 -= 1;
+        cooldown6 -= 1;
+    }
+
+    public void CooldownVolcao()
+    {
+        cooldown1 -= 1;
+        cooldown2 -= 1;
+        cooldown3 -= 1;
+        cooldown4 -= 1;
+        cooldown5 -= 1;
+    }
+
 
 
 
@@ -252,100 +380,74 @@ public class BotRandom : MonoBehaviour
     //função para atacar a carta do tsunami do bot
     public void AttackTsunami1()
     {
-        if(cooldown1 == 0)
-        {
-            vida7 -= (ataque1 * ataque1) / (ataque1 + defesa7);
-            VidaTexto7.text = vida7.ToString();
-            UseTsunami.SetActive(false);
-            cooldown1 = 5;
-        }
-        else
-        {
-
-        }
+        vida7 -= (ataque1 * ataque1) / (ataque1 + defesa7);
+        ataque7 -= 1;
+        AtaqueTexto7.text = ataque7.ToString();
+        int damageInInt7 = Mathf.RoundToInt(vida7);
+        VidaTexto7.text = damageInInt7.ToString();
+        UseTsunami.SetActive(false);
+        cooldown1 = 5;
     }
 
     //função para atacar a carta do terramoto do bot
     public void AttackTerramoto1()
     {
-        if(cooldown1 == 0)
-        {
-            VidaTexto8.text = vida8.ToString();
-            vida8 -= (ataque1 * ataque1) / (ataque1 + defesa8);
-            UseTerramoto.SetActive(false);
-            cooldown1 = 5;
-        }
-        else
-        {
-
-        }
+        vida8 -= (ataque1 * ataque1) / (ataque1 + defesa8);
+        ataque8 -= 1;
+        AtaqueTexto8.text = ataque8.ToString();
+        int damageInInt8 = Mathf.RoundToInt(vida8);
+        VidaTexto8.text = damageInInt8.ToString();
+        UseTsunami.SetActive(false);
+        cooldown1 = 5;
     }
 
     //função para atacar a carta do fogo do bot
     public void AttackFogo1()
     {
-        if(cooldown1 == 0)
-        {
-            VidaTexto9.text = vida9.ToString();
-            vida9 -= (ataque1 * ataque1) / (ataque1 + defesa9);
-            UseFogo.SetActive(false);
-            cooldown1 = 5;
-        }
-        else
-        {
-
-        }
+        vida9 -= (ataque1 * ataque1) / (ataque1 + defesa9);
+        ataque9 -= 1;
+        AtaqueTexto9.text = ataque9.ToString();
+        int damageInInt9 = Mathf.RoundToInt(vida9);
+        VidaTexto9.text = damageInInt9.ToString();
+        UseTsunami.SetActive(false);
+        cooldown1 = 5;
         
     }
 
     //função para atacar a carta das trevoadas do bot
     public void AttackTrevoada1()
     {
-        if(cooldown1 == 0)
-        {
-            VidaTexto10.text = vida10.ToString();
-            vida10 -= (ataque1 * ataque1) / (ataque1 + defesa10);
-            UseTrevoada.SetActive(false);
-            cooldown1 = 5;
-        }
-        else
-        {
-
-        }
-        
+        vida10 -= (ataque1 * ataque1) / (ataque1 + defesa10);
+        ataque10 -= 1;
+        AtaqueTexto10.text = ataque10.ToString();
+        int damageInInt10 = Mathf.RoundToInt(vida10);
+        VidaTexto10.text = damageInInt10.ToString();
+        UseTsunami.SetActive(false);
+        cooldown1 = 5;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackTornado1()
     {
-        if(cooldown1 == 0)
-        {
-            VidaTexto11.text = vida11.ToString();
-            vida11 -= (ataque1 * ataque1) / (ataque1 + defesa11);
-            UseTornado.SetActive(false);
-            cooldown1 = 5;
-        }
-        else
-        {
-
-        }
+        vida11 -= (ataque1 * ataque1) / (ataque1 + defesa11);
+        ataque11 -= 1;
+        AtaqueTexto11.text = ataque11.ToString();
+        int damageInInt11 = Mathf.RoundToInt(vida11);
+        VidaTexto11.text = damageInInt11.ToString();
+        UseTsunami.SetActive(false);
+        cooldown1 = 5;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackVolcao1()
     {
-        if(cooldown1 == 0)
-        {
-            VidaTexto12.text = vida12.ToString();
-            vida12 -= (ataque1 * ataque1) / (ataque1 + defesa12);
-            UseVolcao.SetActive(false);
-            cooldown1 = 5;
-        }
-        else
-        {
-
-        }
-        
+        vida12 -= (ataque1 * ataque1) / (ataque1 + defesa12);
+        ataque12 -= 1;
+        AtaqueTexto12.text = ataque12.ToString();
+        int damageInInt12 = Mathf.RoundToInt(vida12);
+        VidaTexto12.text = damageInInt12.ToString();
+        UseTsunami.SetActive(false);
+        cooldown1 = 5;
     }
 
 
@@ -356,97 +458,121 @@ public class BotRandom : MonoBehaviour
     //função para atacar a carta do tsunami do bot
     public void AttackTsunami2()
     {
-        if(cooldown2 == 0)
-        {
-            VidaTexto7.text = vida7.ToString();
-            vida7 -= (ataque2 * ataque2) / (ataque2 + defesa7);
-            UseTsunami.SetActive(false);
-            cooldown2 = 4;
-        }
-        else
-        {
-
-        }
+        vida7 -= (ataque2 * ataque2) / (ataque2 + defesa7);
+        vida8 -= 1;
+        vida9 -= 1;
+        vida10 -= 1;
+        vida11 -= 1;
+        vida12 -= 1;
+        int damageInInt7 = Mathf.RoundToInt(vida7);
+        VidaTexto7.text = damageInInt7.ToString();
+        VidaTexto8.text = vida8.ToString();
+        VidaTexto9.text = vida9.ToString();
+        VidaTexto10.text = vida10.ToString();
+        VidaTexto11.text = vida11.ToString();
+        VidaTexto12.text = vida12.ToString();
+        UseTerramoto.SetActive(false);
+        cooldown2 = 4;
     }
 
     //função para atacar a carta do terramoto do bot
     public void AttackTerramoto2()
     {
-        if(cooldown2 == 0)
-        {
-            VidaTexto8.text = vida8.ToString();
-            vida8 -= (ataque2 * ataque2) / (ataque2 + defesa8);
-            UseTerramoto.SetActive(false);
-            cooldown2 = 4;
-        }
-        else
-        {
-
-        }
+        vida8 -= (ataque2 * ataque2) / (ataque2 + defesa8);
+        vida7 -= 1;
+        vida9 -= 1;
+        vida10 -= 1;
+        vida11 -= 1;
+        vida12 -= 1;
+        int damageInInt8 = Mathf.RoundToInt(vida8);
+        VidaTexto8.text = damageInInt8.ToString();
+        VidaTexto7.text = vida7.ToString();
+        VidaTexto9.text = vida9.ToString();
+        VidaTexto10.text = vida10.ToString();
+        VidaTexto11.text = vida11.ToString();
+        VidaTexto12.text = vida12.ToString();
+        UseTerramoto.SetActive(false);
+        cooldown2 = 4;
     }
 
     //função para atacar a carta do fogo do bot
     public void AttackFogo2()
     {
-        if(cooldown2 == 0)
-        {
-            VidaTexto9.text = vida9.ToString();
-            vida9 -= (ataque2 * ataque2) / (ataque2 + defesa9);
-            UseFogo.SetActive(false);
-            cooldown2 = 4;
-        }
-        else
-        {
-
-        }
+        vida9 -= (ataque2 * ataque2) / (ataque2 + defesa9);
+        vida7 -= 1;
+        vida8 -= 1;
+        vida10 -= 1;
+        vida11 -= 1;
+        vida12 -= 1;
+        int damageInInt9 = Mathf.RoundToInt(vida9);
+        VidaTexto7.text = vida7.ToString();
+        VidaTexto8.text = vida8.ToString();
+        VidaTexto10.text = vida10.ToString();
+        VidaTexto11.text = vida11.ToString();
+        VidaTexto12.text = vida12.ToString();
+        VidaTexto9.text = damageInInt9.ToString();
+        UseTerramoto.SetActive(false);
+        cooldown2 = 4;
     }
 
     //função para atacar a carta das trevoadas do bot
     public void AttackTrevoada2()
     {
-        if(cooldown2 == 0)
-        {
-            VidaTexto10.text = vida10.ToString();
-            vida10 -= (ataque2 * ataque2) / (ataque2 + defesa10);
-            UseTrevoada.SetActive(false);
-            cooldown2 = 4;
-        }
-        else
-        {
-
-        }
+        vida10 -= (ataque2 * ataque2) / (ataque2 + defesa10);
+        vida7 -= 1;
+        vida8 -= 1;
+        vida9 -= 1;
+        vida11 -= 1;
+        vida12 -= 1;
+        int damageInInt10 = Mathf.RoundToInt(vida10);
+        VidaTexto7.text = vida7.ToString();
+        VidaTexto8.text = vida8.ToString();
+        VidaTexto9.text = vida9.ToString();
+        VidaTexto11.text = vida11.ToString();
+        VidaTexto12.text = vida12.ToString();
+        VidaTexto10.text = damageInInt10.ToString();
+        UseTerramoto.SetActive(false);
+        cooldown2 = 4;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackTornado2()
     {
-        if(cooldown2 == 0)
-        {
-            VidaTexto11.text = vida11.ToString();
-            vida11 -= (ataque2 * ataque2) / (ataque2 + defesa11);
-            UseTornado.SetActive(false);
-            cooldown2 = 4;
-        }
-        else
-        {
-
-        }
+        vida11 -= (ataque2 * ataque2) / (ataque2 + defesa11);
+        vida7 -= 1;
+        vida8 -= 1;
+        vida9 -= 1;
+        vida10 -= 1;
+        vida12 -= 1;
+        int damageInInt11 = Mathf.RoundToInt(vida11);
+        VidaTexto7.text = vida7.ToString();
+        VidaTexto8.text = vida8.ToString();
+        VidaTexto9.text = vida9.ToString();
+        VidaTexto10.text = vida10.ToString();
+        VidaTexto12.text = vida12.ToString();
+        VidaTexto11.text = damageInInt11.ToString();
+        UseTerramoto.SetActive(false);
+        cooldown2 = 4;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackVolcao2()
     {
-        if(cooldown2 == 0)
-        {
-            VidaTexto12.text = vida12.ToString();
-            vida12 -= (ataque2 * ataque2) / (ataque2 + defesa12);
-            UseVolcao.SetActive(false);
-            cooldown2 = 4;
-        }
-        else
-        {
-
-        }
+        vida12 -= (ataque2 * ataque2) / (ataque2 + defesa12);
+        vida7 -= 1;
+        vida8 -= 1;
+        vida9 -= 1;
+        vida10 -= 1;
+        vida11 -= 1;
+        int damageInInt12 = Mathf.RoundToInt(vida12);
+        VidaTexto12.text = damageInInt12.ToString();
+        VidaTexto7.text = vida7.ToString();
+        VidaTexto8.text = vida8.ToString();
+        VidaTexto9.text = vida9.ToString();
+        VidaTexto10.text = vida10.ToString();
+        VidaTexto11.text = vida11.ToString();
+        UseTerramoto.SetActive(false);
+        cooldown2 = 4;
     }
 
 
@@ -456,97 +582,121 @@ public class BotRandom : MonoBehaviour
     //função para atacar a carta do tsunami do bot
     public void AttackTsunami3()
     {
-        if(cooldown3 == 0)
-        {
-            VidaTexto7.text = vida7.ToString();
-            vida7 -= (ataque3 * ataque3) / (ataque3 + defesa7);
-            UseTsunami.SetActive(false);
-            cooldown3 = 6;
-        }
-        else
-        {
-
-        }
+        vida7 -= (ataque3 * ataque3) / (ataque3 + defesa7);
+        vida8 -= 2;
+        vida9 -= 2;
+        vida10 -= 2;
+        vida11 -= 2;
+        vida12 -= 2;
+        int damageInInt7 = Mathf.RoundToInt(vida7);
+        VidaTexto12.text = vida12.ToString();
+        VidaTexto8.text = vida8.ToString();
+        VidaTexto9.text = vida9.ToString();
+        VidaTexto10.text = vida10.ToString();
+        VidaTexto11.text = vida11.ToString();
+        VidaTexto7.text = damageInInt7.ToString();
+        UseFogo.SetActive(false);
+        cooldown3 = 6;
     }
 
     //função para atacar a carta do terramoto do bot
     public void AttackTerramoto3()
     {
-        if(cooldown3 == 0)
-        {
-            VidaTexto8.text = vida8.ToString();
-            vida8 -= (ataque3 * ataque3) / (ataque3 + defesa8);
-            UseTerramoto.SetActive(false);
-            cooldown3 = 6;
-        }
-        else
-        {
-
-        }
+        vida8 -= (ataque3 * ataque3) / (ataque3 + defesa8);
+        vida7 -= 2;
+        vida9 -= 2;
+        vida10 -= 2;
+        vida11 -= 2;
+        vida12 -= 2;
+        int damageInInt8 = Mathf.RoundToInt(vida8);
+        VidaTexto8.text = damageInInt8.ToString();
+        VidaTexto12.text = vida12.ToString();
+        VidaTexto7.text = vida7.ToString();
+        VidaTexto9.text = vida9.ToString();
+        VidaTexto10.text = vida10.ToString();
+        VidaTexto11.text = vida11.ToString();
+        UseFogo.SetActive(false);
+        cooldown3 = 6;
     }
 
     //função para atacar a carta do fogo do bot
     public void AttackFogo3()
     {
-        if(cooldown3 == 0)
-        {
-            VidaTexto9.text = vida9.ToString();
-            vida9 -= (ataque3 * ataque3) / (ataque3 + defesa9);
-            UseFogo.SetActive(false);
-            cooldown3 = 6;
-        }
-        else
-        {
-
-        }
+        vida9 -= (ataque3 * ataque3) / (ataque3 + defesa9);
+        vida7 -= 2;
+        vida8 -= 2;
+        vida10 -= 2;
+        vida11 -= 2;
+        vida12 -= 2;
+        int damageInInt9 = Mathf.RoundToInt(vida9);
+        VidaTexto9.text = damageInInt9.ToString();
+        VidaTexto12.text = vida12.ToString();
+        VidaTexto7.text = vida7.ToString();
+        VidaTexto8.text = vida8.ToString();
+        VidaTexto10.text = vida10.ToString();
+        VidaTexto11.text = vida11.ToString();
+        UseFogo.SetActive(false);
+        cooldown3 = 6;
     }
 
     //função para atacar a carta das trevoadas do bot
     public void AttackTrevoada3()
     {
-        if (cooldown3 == 0)
-        {
-            VidaTexto10.text = vida10.ToString();
-            vida10 -= (ataque3 * ataque3) / (ataque3 + defesa10);
-            UseTrevoada.SetActive(false);
-            cooldown3 = 6;
-        }
-        else
-        {
-
-        }
+        vida10 -= (ataque3 * ataque3) / (ataque3 + defesa10);
+        vida7 -= 2;
+        vida8 -= 2;
+        vida9 -= 2;
+        vida11 -= 2;
+        vida12 -= 2;
+        int damageInInt10 = Mathf.RoundToInt(vida10);
+        VidaTexto10.text = damageInInt10.ToString();
+        VidaTexto12.text = vida12.ToString();
+        VidaTexto7.text = vida7.ToString();
+        VidaTexto8.text = vida8.ToString();
+        VidaTexto9.text = vida9.ToString();
+        VidaTexto11.text = vida11.ToString();
+        UseFogo.SetActive(false);
+        cooldown3 = 6;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackTornado3()
     {
-        if(cooldown3 == 0)
-        {
-            VidaTexto11.text = vida11.ToString();
-            vida11 -= (ataque3 * ataque3) / (ataque3 + defesa11);
-            UseTornado.SetActive(false);
-            cooldown3 = 6;
-        }
-        else
-        {
-
-        }
+        vida11 -= (ataque3 * ataque3) / (ataque3 + defesa11);
+        vida7 -= 2;
+        vida8 -= 2;
+        vida9 -= 2;
+        vida10 -= 2;
+        vida12 -= 2;
+        int damageInInt11 = Mathf.RoundToInt(vida11);
+        VidaTexto11.text = damageInInt11.ToString();
+        VidaTexto12.text = vida12.ToString();
+        VidaTexto7.text = vida7.ToString();
+        VidaTexto8.text = vida8.ToString();
+        VidaTexto9.text = vida9.ToString();
+        VidaTexto10.text = vida10.ToString();
+        UseFogo.SetActive(false);
+        cooldown3 = 6;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackVolcao3()
     {
-        if(cooldown3 == 0)
-        {
-            VidaTexto12.text = vida12.ToString();
-            vida12 -= (ataque3 * ataque3) / (ataque3 + defesa12);
-            UseVolcao.SetActive(false);
-            cooldown3 = 6;
-        }
-        else
-        {
-
-        }
+        vida12 -= (ataque3 * ataque3) / (ataque3 + defesa12);
+        vida7 -= 2;
+        vida8 -= 2;
+        vida9 -= 2;
+        vida10 -= 2;
+        vida11 -= 2;
+        int damageInInt12 = Mathf.RoundToInt(vida12);
+        VidaTexto12.text = damageInInt12.ToString();
+        VidaTexto11.text = vida11.ToString();
+        VidaTexto7.text = vida7.ToString();
+        VidaTexto8.text = vida8.ToString();
+        VidaTexto9.text = vida9.ToString();
+        VidaTexto10.text = vida10.ToString();
+        UseFogo.SetActive(false);
+        cooldown3 = 6;
     }
 
 
@@ -557,94 +707,121 @@ public class BotRandom : MonoBehaviour
     //função para atacar a carta do tsunami do bot
     public void AttackTsunami4()
     {
-        if(cooldown4 == 0)
-        {
-            VidaTexto7.text = vida7.ToString();
-            vida7 -= (ataque4 * ataque4) / (ataque4 + defesa7);
-            UseTsunami.SetActive(false);
-            cooldown4 = 3;
-        }
-        else
-        {
-
-        }
+        vida7 -= (ataque4 * ataque4) / (ataque4 + defesa7);
+        vida2 += 1;
+        vida3 += 1;
+        vida1 += 1;
+        vida5 += 1;
+        vida6 += 1;
+        int damageInInt7 = Mathf.RoundToInt(vida7);
+        VidaTexto7.text = damageInInt7.ToString();
+        VidaTexto1.text = vida1.ToString();
+        VidaTexto2.text = vida2.ToString();
+        VidaTexto3.text = vida3.ToString();
+        VidaTexto5.text = vida5.ToString();
+        VidaTexto6.text = vida6.ToString();
+        UseTrevoada.SetActive(false);
+        cooldown4 = 3;
     }
 
     //função para atacar a carta do terramoto do bot
     public void AttackTerramoto4()
     {
-        if(cooldown4 == 0)
-        {
-            VidaTexto8.text = vida8.ToString();
-            vida8 -= (ataque4 * ataque4) / (ataque4 + defesa8);
-            UseTerramoto.SetActive(false);
-            cooldown4 = 3;
-        }
-        else
-        {
-
-        }
+        vida8 -= (ataque4 * ataque4) / (ataque4 + defesa8);
+        vida2 += 1;
+        vida3 += 1;
+        vida1 += 1;
+        vida5 += 1;
+        vida6 += 1;
+        int damageInInt8 = Mathf.RoundToInt(vida8);
+        VidaTexto8.text = damageInInt8.ToString();
+        VidaTexto1.text = vida1.ToString();
+        VidaTexto2.text = vida2.ToString();
+        VidaTexto3.text = vida3.ToString();
+        VidaTexto5.text = vida5.ToString();
+        VidaTexto6.text = vida6.ToString();
+        UseTrevoada.SetActive(false);
+        cooldown4 = 3;
     }
 
     //função para atacar a carta do fogo do bot
     public void AttackFogo4()
     {
-        if (cooldown4 == 0)
-        {
-            VidaTexto9.text = vida9.ToString();
-            vida9 -= (ataque4 * ataque4) / (ataque4 + defesa9);
-            UseFogo.SetActive(false);
-            cooldown4 = 3;
-        }
-        else
-        {
-
-        }
+        vida9 -= (ataque4 * ataque4) / (ataque4 + defesa9);
+        vida2 += 1;
+        vida3 += 1;
+        vida1 += 1;
+        vida5 += 1;
+        vida6 += 1;
+        int damageInInt9 = Mathf.RoundToInt(vida9);
+        VidaTexto9.text = damageInInt9.ToString();
+        VidaTexto1.text = vida1.ToString();
+        VidaTexto2.text = vida2.ToString();
+        VidaTexto3.text = vida3.ToString();
+        VidaTexto5.text = vida5.ToString();
+        VidaTexto6.text = vida6.ToString();
+        UseTrevoada.SetActive(false);
+        cooldown4 = 3;
     }
 
     //função para atacar a carta das trevoadas do bot
     public void AttackTrevoada4()
     {
-        if(cooldown4 == 0)
-        {
-            VidaTexto10.text = vida10.ToString();
-            vida10 -= (ataque4 * ataque4) / (ataque4 + defesa10);
-            UseTrevoada.SetActive(false);
-            cooldown4 = 3;
-        }
-        else { }
+        vida10 -= (ataque4 * ataque4) / (ataque4 + defesa10);
+        vida2 += 1;
+        vida3 += 1;
+        vida1 += 1;
+        vida5 += 1;
+        vida6 += 1;
+        int damageInInt10 = Mathf.RoundToInt(vida10);
+        VidaTexto10.text = damageInInt10.ToString();
+        VidaTexto1.text = vida1.ToString();
+        VidaTexto2.text = vida2.ToString();
+        VidaTexto3.text = vida3.ToString();
+        VidaTexto5.text = vida5.ToString();
+        VidaTexto6.text = vida6.ToString();
+        UseTrevoada.SetActive(false);
+        cooldown4 = 3;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackTornado4()
     {
-        if(cooldown4 == 0)
-        {
-            VidaTexto11.text = vida11.ToString();
-            vida11 -= (ataque4 * ataque4) / (ataque4 + defesa11);
-            UseTornado.SetActive(false);
-            cooldown4 = 3;
-        }
-        else
-        {
-
-        }
+        vida11 -= (ataque4 * ataque4) / (ataque4 + defesa11);
+        vida2 += 1;
+        vida3 += 1;
+        vida1 += 1;
+        vida5 += 1;
+        vida6 += 1;
+        int damageInInt11 = Mathf.RoundToInt(vida11);
+        VidaTexto11.text = damageInInt11.ToString();
+        VidaTexto1.text = vida1.ToString();
+        VidaTexto2.text = vida2.ToString();
+        VidaTexto3.text = vida3.ToString();
+        VidaTexto5.text = vida5.ToString();
+        VidaTexto6.text = vida6.ToString();
+        UseTrevoada.SetActive(false);
+        cooldown4 = 3;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackVolcao4()
     {
-        if(cooldown4 == 0)
-        {
-            VidaTexto12.text = vida12.ToString();
-            vida12 -= (ataque4 * ataque4) / (ataque4 + defesa12);
-            UseVolcao.SetActive(false);
-            cooldown4 = 3;
-        }
-        else
-        {
-
-        }
+        vida12 -= (ataque4 * ataque4) / (ataque4 + defesa12);
+        vida2 += 1;
+        vida3 += 1;
+        vida1 += 1;
+        vida5 += 1;
+        vida6 += 1;
+        int damageInInt12 = Mathf.RoundToInt(vida12);
+        VidaTexto12.text = damageInInt12.ToString();
+        VidaTexto1.text = vida1.ToString();
+        VidaTexto2.text = vida2.ToString();
+        VidaTexto3.text = vida3.ToString();
+        VidaTexto5.text = vida5.ToString();
+        VidaTexto6.text = vida6.ToString();
+        UseTrevoada.SetActive(false);
+        cooldown4 = 3;
     }
 
 
@@ -654,97 +831,133 @@ public class BotRandom : MonoBehaviour
     //função para atacar a carta do tsunami do bot
     public void AttackTsunami5()
     {
-        if(cooldown5 == 0)
-        {
-            VidaTexto7.text = vida7.ToString();
-            vida7 -= (ataque5 * ataque5) / (ataque5 + defesa7);
-            UseTsunami.SetActive(false);
-            cooldown5 = 7;
-        }
-        else
-        {
-
-        }
+        vida7 -= (ataque5 * ataque5) / (ataque5 + defesa7);
+        defesa7 -= 1;
+        defesa8 -= 1;
+        defesa9 -= 1;
+        defesa10 -= 1;
+        defesa11 -= 1;
+        defesa12 -= 1;
+        int damageInInt7 = Mathf.RoundToInt(vida7);
+        VidaTexto7.text = damageInInt7.ToString();
+        DefesaTexto7.text = defesa7.ToString();
+        DefesaTexto8.text = defesa8.ToString();
+        DefesaTexto9.text = defesa9.ToString();
+        DefesaTexto10.text = defesa10.ToString();
+        DefesaTexto11.text = defesa11.ToString();
+        DefesaTexto12.text = defesa12.ToString();
+        UseTornado.SetActive(false);
+        cooldown5 = 7;
     }
 
     //função para atacar a carta do terramoto do bot
     public void AttackTerramoto5()
     {
-        if(cooldown5 == 0)
-        {
-            VidaTexto8.text = vida8.ToString();
-            vida8 -= (ataque5 * ataque5) / (ataque5 + defesa8);
-            UseTerramoto.SetActive(false);
-            cooldown5 = 7;
-        }
-        else
-        {
-
-        }
+        vida8 -= (ataque5 * ataque5) / (ataque5 + defesa8);
+        defesa7 -= 1;
+        defesa8 -= 1;
+        defesa9 -= 1;
+        defesa10 -= 1;
+        defesa11 -= 1;
+        defesa12 -= 1;
+        int damageInInt8 = Mathf.RoundToInt(vida8);
+        VidaTexto8.text = damageInInt8.ToString();
+        DefesaTexto7.text = defesa7.ToString();
+        DefesaTexto8.text = defesa8.ToString();
+        DefesaTexto9.text = defesa9.ToString();
+        DefesaTexto10.text = defesa10.ToString();
+        DefesaTexto11.text = defesa11.ToString();
+        DefesaTexto12.text = defesa12.ToString();
+        UseTornado.SetActive(false);
+        cooldown5 = 7;
     }
 
     //função para atacar a carta do fogo do bot
     public void AttackFogo5()
     {
-        if(cooldown5 == 0)
-        {
-            VidaTexto9.text = vida9.ToString();
-            vida9 -= (ataque5 * ataque5) / (ataque5 + defesa9);
-            UseFogo.SetActive(false);
-            cooldown5 = 7;
-        }
-        else
-        {
-
-        }
+        vida9 -= (ataque5 * ataque5) / (ataque5 + defesa9);
+        defesa7 -= 1;
+        defesa8 -= 1;
+        defesa9 -= 1;
+        defesa10 -= 1;
+        defesa11 -= 1;
+        defesa12 -= 1;
+        int damageInInt9 = Mathf.RoundToInt(vida9);
+        VidaTexto9.text = damageInInt9.ToString();
+        DefesaTexto7.text = defesa7.ToString();
+        DefesaTexto8.text = defesa8.ToString();
+        DefesaTexto9.text = defesa9.ToString();
+        DefesaTexto10.text = defesa10.ToString();
+        DefesaTexto11.text = defesa11.ToString();
+        DefesaTexto12.text = defesa12.ToString();
+        UseTornado.SetActive(false);
+        cooldown5 = 7;
     }
 
     //função para atacar a carta das trevoadas do bot
     public void AttackTrevoada5()
     {
-        if(cooldown5 == 0)
-        {
-            VidaTexto10.text = vida10.ToString();
-            vida10 -= (ataque5 * ataque5) / (ataque5 + defesa10);
-            UseTrevoada.SetActive(false);
-            cooldown5 = 7;
-        }
-        else
-        {
-
-        }
+        vida10 -= (ataque5 * ataque5) / (ataque5 + defesa10);
+        defesa7 -= 1;
+        defesa8 -= 1;
+        defesa9 -= 1;
+        defesa10 -= 1;
+        defesa11 -= 1;
+        defesa12 -= 1;
+        int damageInInt10 = Mathf.RoundToInt(vida10);
+        VidaTexto10.text = damageInInt10.ToString();
+        DefesaTexto7.text = defesa7.ToString();
+        DefesaTexto8.text = defesa8.ToString();
+        DefesaTexto9.text = defesa9.ToString();
+        DefesaTexto10.text = defesa10.ToString();
+        DefesaTexto11.text = defesa11.ToString();
+        DefesaTexto12.text = defesa12.ToString();
+        UseTornado.SetActive(false);
+        cooldown5 = 7;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackTornado5()
     {
-        if(cooldown5 == 0)
-        {
-            VidaTexto11.text = vida11.ToString();
-            vida11 -= (ataque5 * ataque5) / (ataque5 + defesa11);
-            UseTornado.SetActive(false);
-            cooldown5 = 7;
-        }
-        else
-        {
-
-        }
+        vida11 -= (ataque5 * ataque5) / (ataque5 + defesa11);
+        defesa7 -= 1;
+        defesa8 -= 1;
+        defesa9 -= 1;
+        defesa10 -= 1;
+        defesa11 -= 1;
+        defesa12 -= 1;
+        int damageInInt11 = Mathf.RoundToInt(vida11);
+        VidaTexto11.text = damageInInt11.ToString();
+        DefesaTexto7.text = defesa7.ToString();
+        DefesaTexto8.text = defesa8.ToString();
+        DefesaTexto9.text = defesa9.ToString();
+        DefesaTexto10.text = defesa10.ToString();
+        DefesaTexto11.text = defesa11.ToString();
+        DefesaTexto12.text = defesa12.ToString();
+        UseTornado.SetActive(false);
+        cooldown5 = 7;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackVolcao5()
     {
-        if(cooldown5 == 0)
-        {
-            VidaTexto12.text = vida12.ToString();
-            vida12 -= (ataque5 * ataque5) / (ataque5 + defesa12);
-            UseVolcao.SetActive(false);
-            cooldown5 = 7;
-        }
-        else
-        {
-
-        }
+        vida12 -= (ataque5 * ataque5) / (ataque5 + defesa12);
+        defesa7 -= 1;
+        defesa8 -= 1;
+        defesa9 -= 1;
+        defesa10 -= 1;
+        defesa11 -= 1;
+        defesa12 -= 1;
+        int damageInInt12 = Mathf.RoundToInt(vida12);
+        VidaTexto12.text = damageInInt12.ToString();
+        DefesaTexto7.text = defesa7.ToString();
+        DefesaTexto8.text = defesa8.ToString();
+        DefesaTexto9.text = defesa9.ToString();
+        DefesaTexto10.text = defesa10.ToString();
+        DefesaTexto11.text = defesa11.ToString();
+        DefesaTexto12.text = defesa12.ToString();
+        UseTornado.SetActive(false);
+        cooldown5 = 7;
     }
 
 
@@ -754,96 +967,113 @@ public class BotRandom : MonoBehaviour
     //função para atacar a carta do tsunami do bot
     public void AttackTsunami6()
     {
-        if(cooldown6 == 0)
-        {
-            VidaTexto7.text = vida7.ToString();
-            vida7 -= (ataque6 * ataque6) / (ataque6 + defesa7);
-            UseTsunami.SetActive(false);
-            cooldown6 = 8;
-        }
-        else
-        {
-
-        }
+        vida7 -= (ataque6 * ataque6) / (ataque6 + defesa7);
+        int damageInInt7 = Mathf.RoundToInt(vida7);
+        VidaTexto7.text = damageInInt7.ToString();
+        UseVolcao.SetActive(false);
+        cooldown6 = 8;
+        cooldown7 = 2;
     }
 
     //função para atacar a carta do terramoto do bot
     public void AttackTerramoto6()
     {
-        if(cooldown6 == 0)
-        {
-            VidaTexto8.text = vida8.ToString();
-            vida8 -= (ataque6 * ataque6) / (ataque6 + defesa8);
-            UseTerramoto.SetActive(false);
-            cooldown6 = 8;
-        }
-        else
-        {
-
-        }
+        vida8 -= (ataque6 * ataque6) / (ataque6 + defesa8);
+        int damageInInt8 = Mathf.RoundToInt(vida8);
+        VidaTexto8.text = damageInInt8.ToString();
+        UseVolcao.SetActive(false);
+        cooldown6 = 8;
+        cooldown8 = 2;
     }
 
     //função para atacar a carta do fogo do bot
     public void AttackFogo6()
     {
-        if(cooldown6 == 0)
-        {
-            VidaTexto9.text = vida9.ToString();
-            vida9 -= (ataque6 * ataque6) / (ataque6 + defesa9);
-            UseFogo.SetActive(false);
-            cooldown6 = 8;
-        }
-        else
-        {
-
-        }
+        vida9 -= (ataque6 * ataque6) / (ataque6 + defesa9);
+        int damageInInt9 = Mathf.RoundToInt(vida9);
+        VidaTexto9.text = damageInInt9.ToString();
+        UseVolcao.SetActive(false);
+        cooldown6 = 8;
+        cooldown9 = 2;
     }
 
     //função para atacar a carta das trevoadas do bot
     public void AttackTrevoada6()
     {
-        if(cooldown6 == 0)
-        {
-            VidaTexto10.text = vida10.ToString();
-            vida10 -= (ataque6 * ataque6) / (ataque6 + defesa10);
-            UseTrevoada.SetActive(false);
-            cooldown6 = 8;
-        }
-        else
-        {
-
-        }
+        vida10 -= (ataque6 * ataque6) / (ataque6 + defesa10);
+        int damageInInt10 = Mathf.RoundToInt(vida10);
+        VidaTexto10.text = damageInInt10.ToString();
+        UseVolcao.SetActive(false);
+        cooldown6 = 8;
+        cooldown10 = 2;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackTornado6()
     {
-        if(cooldown6 == 0)
-        {
-            VidaTexto11.text = vida11.ToString();
-            vida11 -= (ataque6 * ataque6) / (ataque6 + defesa11);
-            UseTornado.SetActive(false);
-            cooldown6 = 8;
-        }
-        else
-        {
-
-        }
+        vida11 -= (ataque6 * ataque6) / (ataque6 + defesa11);
+        int damageInInt11 = Mathf.RoundToInt(vida11);
+        VidaTexto11.text = damageInInt11.ToString();
+        UseVolcao.SetActive(false);
+        cooldown6 = 8;
+        cooldown11 = 2;
     }
 
     //função para atacar a carta do tsunami do bot
     public void AttackVolcao6()
     {
-        if(cooldown6 == 0)
-        {
-            VidaTexto12.text = vida12.ToString();
-            vida12 -= (ataque6 * ataque6) / (ataque6 + defesa12);
-            UseVolcao.SetActive(false);
-            cooldown6 = 8;
-        }
-        else
-        {
+        vida12 -= (ataque6 * ataque6) / (ataque6 + defesa12);
+        int damageInInt12 = Mathf.RoundToInt(vida12);
+        VidaTexto12.text = damageInInt12.ToString();
+        UseVolcao.SetActive(false);
+        cooldown6 = 8;
+        cooldown12 = 2;
+    }
 
+    
+
+
+    private void Update()
+    {
+        if (cartas == 0)
+        {
+            SceneManager.LoadScene(3);
+        }
+
+        if(vida7 <= 0)
+        {
+            Object.Destroy(carta7);
+            cartas -= 1;
+        }
+
+        if (vida8 <= 0)
+        {
+            Object.Destroy(carta8);
+            cartas -= 1;
+        }
+
+        if (vida9 <= 0)
+        {
+            Object.Destroy(carta9);
+            cartas -= 1;
+        }
+
+        if (vida10 <= 0)
+        {
+            Object.Destroy(carta10);
+            cartas -= 1;
+        }
+
+        if (vida11 <= 0)
+        {
+            Object.Destroy(carta11);
+            cartas -= 1;
+        }
+
+        if (vida12 <= 0)
+        {
+            Object.Destroy(carta12);
+            cartas -= 1;
         }
     }
 }

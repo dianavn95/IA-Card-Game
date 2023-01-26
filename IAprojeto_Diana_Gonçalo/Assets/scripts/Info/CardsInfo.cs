@@ -41,7 +41,7 @@ public class CardsInfo : MonoBehaviour
     public void EarthquakeInfoCard()
     {
         titulo.text = "EARTHQUAKE";
-        descricao1.text = "Break your enemy. If you use this card, all of the enemy cards will suffer 1 attack point.";
+        descricao1.text = "Break your enemy. If you use this card, all of the others enemy cards will lose 1 life point.";
         descricao2.text = "When used, this card activates a cooldown that will last 4 rounds.";
 
         bTsunami.SetActive(false);
@@ -56,7 +56,7 @@ public class CardsInfo : MonoBehaviour
     public void FireInfoCard()
     {
         titulo.text = "FIRE";
-        descricao1.text = "Burn them down. If you use this card, all of the enemy cards will suffer 2 attack point.";
+        descricao1.text = "Burn them down. If you use this card, all of the others enemy cards will lose 2 life points.";
         descricao2.text = "When used, this card activates a cooldown that will last 6 rounds.";
 
         bTsunami.SetActive(false);
@@ -71,7 +71,7 @@ public class CardsInfo : MonoBehaviour
     public void LightningInfoCard()
     {
         titulo.text = "LIGHTNING";
-        descricao1.text = "Strike them when they least expect. If you use this card, all of your cards will receive 1 life point.";
+        descricao1.text = "Strike them when they least expect. If you use this card, all of your other cards will receive 1 life point.";
         descricao2.text = "When used, this card activates a cooldown that will last 3 rounds.";
 
         bTsunami.SetActive(false);
